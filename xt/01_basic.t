@@ -4,7 +4,7 @@ use Test2::V0;
 
 use CPAN::02Packages::Search;
 
-my $index = CPAN::02Packages::Search->new(file => "t/02packages.details.txt");
+my $index = CPAN::02Packages::Search->new(file => "xt/02packages.details.txt");
 
 is $index->search('Foo'), undef;
 is $index->search('AC::MrGamoo::Job'), {

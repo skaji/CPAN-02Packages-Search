@@ -1,4 +1,4 @@
-name: linux
+name: macos
 
 on:
   push:
@@ -11,19 +11,7 @@ on:
 jobs:
   perl:
 
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        perl-version:
-          - '5.8'
-          - '5.10'
-          - '5.16'
-          - 'latest'
-          - 'threaded'
-
-    container:
-      image: perl:${{ matrix.perl-version }}
+    runs-on: macOS-latest
 
     steps:
       - uses: actions/checkout@v2

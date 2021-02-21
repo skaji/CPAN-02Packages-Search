@@ -69,16 +69,39 @@ CPAN::02Packages::Search - Search packages in 02packages.details.txt
   my $index = CPAN::02Packages::Search->new(file => '/path/to/02packages.details.txt');
 
   my $result1 = $index->search('Plack'); # { version => "1.0048", path => "M/MI/MIYAGAWA/Plack-1.0048.tar.gz" }
-  my $result2 = $index->search('Unknown'); # undef
+  my $result2 = $index->search('Does_Not_Exist'); # undef
 
 =head1 DESCRIPTION
 
-CPAN::02Packages::Search allows you to search packages in 02packages.details.txt.
-Much code is taken from L<CPAN::Common::Index::Mirror>.
+CPAN::02Packages::Search allows you to search packages in the de facto standard CPAN index file C<02packages.details.txt>.
+
+=head1 MOTIVATION
+
+We can already search packages in C<02packages.details.txt> by the excellent module L<CPAN::Common::Index::Mirror>.
+Its functionality is not only searching packages, but also searching authors and even fetching/caching index files.
+
+As an author of CPAN clients, I just want to search packages in C<02packages.details.txt>.
+So I ended up extracting functionality of searching packages from CPAN::Common::Index::Mirror as CPAN::02Packages::Search.
+
+=head1 PERFORMANCE
+
+CPAN::Common::Index::Mirror and CPAN::02Packages::Search use L<Search::Dict>, which implements binary search.
+A simple benchmark shows that CPAN::02Packages::Search is 422 times faster than I<naive> search.
+
+  ❯ perl bench/bench.pl
+                 Rate naive_search   our_search
+  naive_search 4.13/s           --        -100%
+  our_search   1752/s       42291%           --
+
+See L<bench/bench.pl|https://github.com/skaji/CPAN-02Packages-Search/blob/main/bench/bench.pl> for details.
 
 =head1 SEE ALSO
 
 L<CPAN::Common::Index::Mirror>
+
+L<Search::Dict>
+
+L<https://www.cpan.org/modules/04pause.html>
 
 =head1 AUTHOR
 
