@@ -1,0 +1,9 @@
+prereqs:
+  runtime:
+    requires:
+      perl: { version: '5.008001' }
+      Search::Dict: { version: '1.07' }
+      Tie::Handle::SkipHeader: { version: '0.004' }
+  develop:
+    requires:
+      Test2::V0:

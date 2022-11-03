@@ -1,6 +1,4 @@
-[![Actions Status](https://github.com/skaji/CPAN-02Packages-Search/workflows/linux/badge.svg)](https://github.com/skaji/CPAN-02Packages-Search/actions)
-[![Actions Status](https://github.com/skaji/CPAN-02Packages-Search/workflows/macos/badge.svg)](https://github.com/skaji/CPAN-02Packages-Search/actions)
-[![Actions Status](https://github.com/skaji/CPAN-02Packages-Search/workflows/windows/badge.svg)](https://github.com/skaji/CPAN-02Packages-Search/actions)
+[![Actions Status](https://github.com/skaji/CPAN-02Packages-Search/actions/workflows/test.yml/badge.svg)](https://github.com/skaji/CPAN-02Packages-Search/actions)
 
 # NAME
 
