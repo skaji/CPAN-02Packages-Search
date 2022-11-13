@@ -28,12 +28,12 @@ So I ended up extracting functionality of searching packages from CPAN::Common::
 # PERFORMANCE
 
 CPAN::Common::Index::Mirror and CPAN::02Packages::Search use [Search::Dict](https://metacpan.org/pod/Search%3A%3ADict), which implements binary search.
-A simple benchmark shows that CPAN::02Packages::Search is 422 times faster than _naive_ search.
+A simple benchmark shows that CPAN::02Packages::Search is 322 times faster than _linear_ search.
 
     ❯ perl bench/bench.pl
-                   Rate naive_search   our_search
-    naive_search 4.13/s           --        -100%
-    our_search   1752/s       42291%           --
+                    Rate linear_search    our_search
+    linear_search 4.85/s            --         -100%
+    our_search    1570/s        32244%            --
 
 See [bench/bench.pl](https://github.com/skaji/CPAN-02Packages-Search/blob/main/bench/bench.pl) for details.
 

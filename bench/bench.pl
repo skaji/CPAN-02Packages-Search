@@ -18,7 +18,7 @@ if (!-f $file) {
     !system "gzip -d --stdout $file.gz > $file" or die;
 }
 
-package CPAN::02Packages::NaiveSearch {
+package CPAN::02Packages::LinearSearch {
     sub new {
         my ($class, %argv) = @_;
         my $file = $argv{file};
@@ -46,7 +46,7 @@ package CPAN::02Packages::NaiveSearch {
 }
 
 my $our_search = CPAN::02Packages::Search->new(file => $file);
-my $naive_search = CPAN::02Packages::NaiveSearch->new(file => $file);
+my $linear_search = CPAN::02Packages::LinearSearch->new(file => $file);
 
 cmpthese -1, {
     our_search => sub {
@@ -54,9 +54,9 @@ cmpthese -1, {
         $our_search->search('Plack');
         $our_search->search('Does_Not_Exists');
     },
-    naive_search => sub {
-        $naive_search->search('App::cpm');
-        $naive_search->search('Plack');
-        $naive_search->search('Does_Not_Exists');
+    linear_search => sub {
+        $linear_search->search('App::cpm');
+        $linear_search->search('Plack');
+        $linear_search->search('Does_Not_Exists');
     },
 };
