@@ -2,40 +2,37 @@ package CPAN::02Packages::Search;
 use strict;
 use warnings;
 
-use IO::Handle;
 use Search::Dict ();
+use Symbol ();
 use Tie::Handle::SkipHeader;
 
 our $VERSION = '0.002';
 
 sub new {
     my ($class, %argv) = @_;
-    my $file = $argv{file};
-    my $skip_header = exists $argv{skip_header} ? $argv{skip_header} : 1;
-    my $self = bless { file => $file, skip_header => $skip_header }, $class;
-    $self->_fh;
-    $self;
+    my $fh = $argv{fh};
+    if (!$fh) {
+        my $file = $argv{file};
+        my $skip_header = exists $argv{skip_header} ? $argv{skip_header} : 1;
+        $fh = $class->_open($file, $skip_header);
+    }
+    bless { fh => $fh }, $class;
 }
 
-sub _fh {
-    my $self = shift;
-    return $self->{fh} if defined $self->{pid} && $self->{pid} == $$;
-    my $file = $self->{file};
-    if ($self->{skip_header}) {
-        my $fh = IO::Handle->new;
+sub _open {
+    my ($class, $file, $skip_header) = @_;
+    if ($skip_header) {
+        my $fh = Symbol::gensym;
         tie *$fh, 'Tie::Handle::SkipHeader', '<', $file or die "$!: $file\n";
-        $self->{fh} = $fh;
-    } else {
-        open my $fh, "<", $file or die "$!: $file\n";
-        $self->{fh} = $fh;
+        return $fh;
     }
-    $self->{pid} = $$;
-    $self->{fh};
+    open my $fh, "<", $file or die "$!: $file\n";
+    $fh;
 }
 
 sub search {
     my ($self, $package) = @_;
-    my $fh = $self->_fh;
+    my $fh = $self->{fh};
     seek $fh, 0, 0;
     my $pos = Search::Dict::look $fh, $package, { xfrm => \&_xform_package, fold => 1 };
     return if $pos == -1 || eof $fh;
