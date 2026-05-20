@@ -19,6 +19,11 @@
             "Module::Build::Tiny" : "0.034"
          }
       },
+      "develop" : {
+         "requires" : {
+            "Test2::V0" : "0"
+         }
+      },
       "runtime" : {
          "requires" : {
             "Search::Dict" : "1.07",
@@ -51,4 +56,3 @@
    "x_spdx_expression" : "Artistic-1.0-Perl OR GPL-1.0-or-later",
    "x_static_install" : 1
 }
-
