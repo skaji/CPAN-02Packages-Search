@@ -1,6 +1,7 @@
 Revision history for CPAN-02Packages-Search
 
 {{$NEXT}}
+  - Raise minimum Perl to v5.24
 
 0.100  2023-08-05 08:25:07 JST
     - BREAKING CHANGE: Now CPAN::02Packages::Search itself is not fork-safe.
