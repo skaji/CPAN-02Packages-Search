@@ -43,9 +43,12 @@ See [bench/bench.pl](https://github.com/skaji/CPAN-02Packages-Search/blob/main/b
 
 [https://www.cpan.org/modules/04pause.html](https://www.cpan.org/modules/04pause.html)
 
-# AUTHOR
+# ARTIFACT ATTESTATIONS
 
-Shoichi Kaji <skaji@cpan.org>
+GitHub Artifact Attestations are generated for release tarballs uploaded to
+CPAN. If you care about provenance for the uploaded tarballs, see:
+
+[https://github.com/skaji/CPAN-02Packages-Search/attestations](https://github.com/skaji/CPAN-02Packages-Search/attestations)
 
 # COPYRIGHT AND LICENSE
 
