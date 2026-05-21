@@ -1,5 +1,3 @@
-[![Actions Status](https://github.com/skaji/CPAN-02Packages-Search/actions/workflows/test.yml/badge.svg)](https://github.com/skaji/CPAN-02Packages-Search/actions)
-
 # NAME
 
 CPAN::02Packages::Search - Search packages in 02packages.details.txt
