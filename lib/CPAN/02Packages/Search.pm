@@ -103,13 +103,6 @@ L<https://www.cpan.org/modules/04pause.html>
 
 Shoichi Kaji <skaji@cpan.org>
 
-=head1 ARTIFACT ATTESTATIONS
-
-GitHub Artifact Attestations are generated for release tarballs uploaded to
-CPAN. If you care about provenance for the uploaded tarballs, see:
-
-L<https://github.com/skaji/CPAN-02Packages-Search/attestations>
-
 =head1 COPYRIGHT AND LICENSE
 
 Copyright 2021 Shoichi Kaji <skaji@cpan.org>
